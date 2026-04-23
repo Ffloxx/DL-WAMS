@@ -6,9 +6,11 @@ import { IncidentLogsPage } from './IncidentLogsPage';
 import { CameraGridPage } from './CameraGridPage';
 import { AnalyticsPage } from './AnalyticsPage';
 import { SettingsPage } from './SettingsPage';
+import { POSTerminalPage } from './POSTerminalPage';
+import { InventoryLogPage } from './InventoryLogPage';
 import { StaffManagementPage } from './StaffManagementPage';
 
-export type TabName = 'Camera Grid' | 'Incident Logs' | 'Analytics' | 'Staff Management' | 'Settings';
+export type TabName = 'Camera Grid' | 'Incident Logs' | 'Analytics' | 'Inventory Log' | 'POS Terminal' | 'Staff Management' | 'Settings';
 export type CameraView = '2x2' | '3x3';
 
 export const Dashboard = () => {
@@ -32,6 +34,10 @@ export const Dashboard = () => {
         return <CameraGridPage />;
       case 'Analytics':
         return <AnalyticsPage />;
+      case 'Inventory Log':
+        return <InventoryLogPage />;
+      case 'POS Terminal':
+        return <POSTerminalPage />;
       case 'Staff Management':
         return <StaffManagementPage />;
       case 'Settings':
@@ -49,13 +55,15 @@ export const Dashboard = () => {
       
       {renderPage()}
 
-      <aside className={`border-l border-slate-800 bg-[#0f1522] flex flex-col shrink-0 ${activeTab === 'Incident Logs' ? 'w-[350px]' : 'w-80'}`}>
-        {activeTab === 'Incident Logs' ? (
-          <IncidentDetailsSidebar />
-        ) : (
-          <IncidentLogs onInitiateLockdown={handleLockdown} />
-        )}
-      </aside>
+      {activeTab !== 'POS Terminal' && activeTab !== 'Inventory Log' && (
+        <aside className={`border-l border-slate-800 bg-[#0f1522] flex flex-col shrink-0 ${activeTab === 'Incident Logs' ? 'w-[350px]' : 'w-80'}`}>
+          {activeTab === 'Incident Logs' ? (
+            <IncidentDetailsSidebar />
+          ) : (
+            <IncidentLogs onInitiateLockdown={handleLockdown} />
+          )}
+        </aside>
+      )}
     </div>
   );
 };

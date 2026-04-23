@@ -1,5 +1,5 @@
 import React from 'react';
-import { Shield, LayoutGrid, AlertTriangle, BarChart2, Users, Settings, LogOut } from 'lucide-react';
+import { Shield, LayoutGrid, AlertTriangle, BarChart2, Package, Monitor, Users, Settings, LogOut } from 'lucide-react';
 import type { TabName } from '../frontend/Dashboard';
 
 interface SidebarProps {
@@ -13,6 +13,8 @@ export const Sidebar = ({ activeTab, onTabChange, onLogout }: SidebarProps) => {
     { icon: <LayoutGrid className="w-4 h-4" />, label: 'Camera Grid' },
     { icon: <AlertTriangle className="w-4 h-4" />, label: 'Incident Logs' },
     { icon: <BarChart2 className="w-4 h-4" />, label: 'Analytics' },
+    { icon: <Package className="w-4 h-4" />, label: 'Inventory Log' },
+    { icon: <Monitor className="w-4 h-4" />, label: 'POS Terminal' },
     { icon: <Users className="w-4 h-4" />, label: 'Staff Management' },
     { icon: <Settings className="w-4 h-4" />, label: 'Settings' },
   ];
